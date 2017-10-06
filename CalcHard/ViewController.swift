@@ -37,16 +37,22 @@ class ViewController: UIViewController {
     
     // Sets the 'result' screen to the number currently being typed by the user.
     @IBAction func userInputToDisplay(_ sender: UIButton) {
-        // Get the digit from the button pressed by the user
+        // Store the digit input by the user.
         let digit = sender.currentTitle!
         
+        // If the user has already started entering a number...
         if appendTheNextDigit {
+            // Store the text currently on the screen of the calculator.
             let calculatorScreenText = calculatorScreen.text!
             
+            // Make sure the user doesn't input multiple decimal points.
+            // i.e. we don't want, for example, "5.1.1.2"
             if digit != "." || !calculatorScreenText.contains(".") {
                 calculatorScreen.text = calculatorScreenText + digit
             }
         }
+        // If this is a new number the user has just started entering,
+        // put that number on the display, making sure it reads nice.
         else {
             switch digit {
             case ".":
@@ -66,9 +72,9 @@ class ViewController: UIViewController {
     // Undo the last input of a digit by the user.
     @IBAction func undoLastDigitPress() {
         if appendTheNextDigit {
-            if calculatorScreen.text!.characters.count > 1 {
+            if calculatorScreen.text!.count > 1 {
                 // Remove it from the string of digits in the screen or..
-                calculatorScreen.text! = String(calculatorScreen.text!.characters.dropLast())
+                calculatorScreen.text! = String(calculatorScreen.text!.dropLast())
             }
             else {
                 // ...reset the screen to '0'.
