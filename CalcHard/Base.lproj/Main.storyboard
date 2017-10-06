@@ -113,6 +113,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wRO-zM-Nkj"/>
+                                                            <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q3S-Gp-tnX"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -195,22 +196,22 @@
                                                         <rect key="frame" x="201" y="0.0" width="92.666666666666686" height="76.666666666666686"/>
                                                         <color key="backgroundColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="0.6522902397" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                        <state key="normal" title="cos">
+                                                        <state key="normal" title="→M">
                                                             <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ks-yP-19B"/>
+                                                            <action selector="storeToMemory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RaC-17-bqC"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZP-Zo-IZs">
                                                         <rect key="frame" x="301.66666666666674" y="0.0" width="92.333333333333314" height="76.666666666666686"/>
                                                         <color key="backgroundColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="0.6522902397" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                        <state key="normal" title="tan">
+                                                        <state key="normal" title="M">
                                                             <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r17-uh-rUq"/>
+                                                            <action selector="callMemory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yn2-HF-J6V"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

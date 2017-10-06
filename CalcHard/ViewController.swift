@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     // Create an instance of our model (this project follows the MVC design pattern)
     private var calculatorBrain = CalculatorBrain()
     
+    // Store the value assigned to the 'M' button by the user
+    private var variables = Dictionary<String,Double>()
+    
     // Sets and gets the value currently on the 'result' screen of our calculator,
     // converting to a String (from Int) to set, and converting to an Int (from String) to get.
     private var displayValue:Double {
@@ -89,21 +92,51 @@ class ViewController: UIViewController {
     // If the operation was binary, get ready to accept the second operand.
     // Otherwise, display the result on the screen.
     @IBAction func performOperation(_ sender: UIButton) {
-        calculatorBrain.setOperand(to: displayValue)
-        calculatorBrain.performOperation(sender.currentTitle!)
-        if let result = calculatorBrain.result {
-            displayValue = result
-            descriptionScreen.text = calculatorBrain.getDescription + "="
+        if appendTheNextDigit {
+            calculatorBrain.setOperand(to: displayValue)
+            appendTheNextDigit = false
         }
-        else if calculatorBrain.resultIsPending {
-            descriptionScreen.text = calculatorBrain.getDescription + "..."
+        if let mathematicalSymbol = sender.currentTitle {
+            calculatorBrain.performOperation(mathematicalSymbol)
+        }
+        displayResult()
+    }
+    
+    private func displayResult() {
+        let evaluated = calculatorBrain.evaluate(using: variables)
+        
+        if let result = evaluated.result {
+            displayValue = result
+        }
+        
+        if evaluated.description != "" {
+            descriptionScreen.text = evaluated.description + (evaluated.isPending ? "..." : "=")
         }
         else {
-            calculatorScreen.text = "0"
             descriptionScreen.text = "0"
         }
-        appendTheNextDigit = false
     }
+    
+    @IBAction func storeToMemory(_ sender: UIButton) {
+        variables["M"] = displayValue
+        appendTheNextDigit = false
+        displayResult()
+    }
+    
+    @IBAction func callMemory(_ sender: UIButton) {
+        calculatorBrain.setOperand(to: "M")
+        appendTheNextDigit = false
+        displayResult()
+    }
+    
+    @IBAction func reset(_ sender: UIButton) {
+        calculatorBrain = CalculatorBrain()
+        calculatorScreen.text = "0"
+        descriptionScreen.text = "0"
+        appendTheNextDigit = false
+        variables = [:]
+    }
+    
     
 }
 
