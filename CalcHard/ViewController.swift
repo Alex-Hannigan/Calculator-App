@@ -37,23 +37,30 @@ class ViewController: UIViewController {
     
     // Sets the 'result' screen to the number currently being typed by the user.
     @IBAction func userInputToDisplay(_ sender: UIButton) {
-        // Append the digit to the digits currently in the display.
+        // Get the digit from the button pressed by the user
+        let digit = sender.currentTitle!
+        
         if appendTheNextDigit {
-            // Prevents multiple decimal points from being input.
-            if sender.currentTitle! != "." || !calculatorScreen.text!.contains(".") {
-                calculatorScreen.text = calculatorScreen.text! + sender.currentTitle!
+            let calculatorScreenText = calculatorScreen.text!
+            
+            if digit != "." || !calculatorScreenText.contains(".") {
+                calculatorScreen.text = calculatorScreenText + digit
             }
         }
-        // Replace the digits currently in the display.
         else {
-            if sender.currentTitle! == "." {
-                calculatorScreen.text = "0\(sender.currentTitle!)"
+            switch digit {
+            case ".":
+                calculatorScreen.text = "0."
+            case "0":
+                if calculatorScreen.text == "0" {
+                    return
+                }
+                fallthrough
+            default:
+                calculatorScreen.text = digit
             }
-            else {
-                calculatorScreen.text = sender.currentTitle!
-            }
-            appendTheNextDigit = true
         }
+        appendTheNextDigit = true
     }
     
     // Undo the last input of a digit by the user.
