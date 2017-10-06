@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     // to the digits currently in the display, and 'false' if it should
     // replace them.
     private var appendTheNextDigit = false
+    
+    // Create an instance of our model (this project follows the MVC design pattern)
     private var calculatorBrain = CalculatorBrain()
     
     // Sets and gets the value currently on the 'result' screen of our calculator,

@@ -11,6 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // "We never work on this level." - Paul Hegarty
     var window: UIWindow?
 
 

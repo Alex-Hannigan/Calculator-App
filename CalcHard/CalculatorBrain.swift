@@ -10,8 +10,6 @@ import Foundation
 
 struct CalculatorBrain {
     
-    private var resetEverythingOnNextOperandReceived = true
-    
     // The result of our calculation so far.
     private var accumulator: Double?
     
